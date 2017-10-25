@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Primadenta_Web_App.Models;
+using Primadenta_Web_App.Models.AppData;
 
 namespace Primadenta_Web_App
 {

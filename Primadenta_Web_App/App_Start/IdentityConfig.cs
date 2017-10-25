@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Primadenta_Web_App.Models;
+using Primadenta_Web_App.Models.AppData;
 
 namespace Primadenta_Web_App
 {
