@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Primadenta_Web_App.Models;
+using Primadenta_Web_App.ViewModels;
 
 namespace Primadenta_Web_App.Controllers
 {

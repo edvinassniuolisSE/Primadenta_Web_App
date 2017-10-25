@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace Primadenta_Web_App.Models
+namespace Primadenta_Web_App.ViewModels
 {
     public class IndexViewModel
     {

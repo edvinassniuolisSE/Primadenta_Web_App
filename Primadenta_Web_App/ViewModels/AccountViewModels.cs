@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Primadenta_Web_App.Models
+namespace Primadenta_Web_App.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {
