@@ -1,0 +1,96 @@
+﻿@model Primadenta_Web_App.ViewModels.NewProductViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-3">
+                <!-- *** MENUS AND WIDGETS ***
+                _________________________________________________________ -->
+
+                <div class="panel panel-default sidebar-menu with-icons">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Categories</h3>
+                    </div>
+
+                    <div class="panel-body">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li class="active" id="testass">
+                                Accordions
+                            </li>
+                            <li>
+                                <a href="template-alerts.html">Alerts</a>
+                            </li>
+                            <li>
+                                <a href="template-buttons.html">Buttons</a>
+                            </li>
+                            <li>
+                                <a href="template-content-boxes.html">Content boxes</a>
+                            </li>
+                            <li>
+                                <a href="template-blocks.html">Horizontal blocks</a>
+                            </li>
+                            <li>
+                                <a href="template-pagination.html">Pagination</a>
+                            </li>
+                            <li>
+                                <a href="template-tabs.html">Tabs</a>
+                            </li>
+                            <li>
+                                <a href="template-typography.html">Typography</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            @* TABLE *@
+            <div class="col-md-9">
+
+                @Html.ValidationSummary()
+
+                @using (Html.BeginForm("Save", "Products", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(p => p.Product.Name)
+                        @Html.TextBoxFor(p => p.Product.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(p => p.Product.Name)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(p => p.Product.Packaging)
+                        @Html.TextBoxFor(p => p.Product.Packaging, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(p => p.Product.Packaging)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(p => p.Product.CompanyId)
+                        @Html.DropDownListFor(p => p.Product.CompanyId, new SelectList(Model.Companies, "Id", "Name"), "Pasirinkti", new {@class = "form-control"})
+                        @Html.ValidationMessageFor(p => p.Product.CompanyId)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(p => p.Product.ProductCategoryId)
+                        @Html.DropDownListFor(p => p.Product.ProductCategoryId, new SelectList(Model.ProductCategories, "Id", "Name"), "Pasirinkti", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(p => p.Product.ProductCategoryId)
+                    </div>
+                    @Html.HiddenFor(p => p.Product.Id)
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-primary">Išsaugoti</button>
+                }
+
+
+            </div>
+            @* END TABLE *@
+        </div>
+    </div>
+</section>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

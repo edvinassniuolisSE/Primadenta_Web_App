@@ -1,0 +1,47 @@
+﻿@model Primadenta_Web_App.ViewModels.NewProductViewModel
+
+<div class="modal fade create">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button data-dismiss="modal" class="close"><span>&times;</span></button>
+                <div class="modal-title">Įtraukti produktą</div>
+            </div>
+            @using (Html.BeginForm("Save", "Products", FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <div class="form-group">
+                        @Html.LabelFor(p => p.Product.Name)
+                        @Html.TextBoxFor(p => p.Product.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(p => p.Product.Name)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(p => p.Product.Packaging)
+                        @Html.TextBoxFor(p => p.Product.Packaging, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(p => p.Product.Packaging)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(p => p.Product.CompanyId)
+                        @Html.DropDownListFor(p => p.Product.CompanyId, new SelectList(Model.Companies, "Id", "Name"), "Pasirinkti", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(p => p.Product.CompanyId)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(p => p.Product.ProductCategoryId)
+                        @Html.DropDownListFor(p => p.Product.ProductCategoryId, new SelectList(Model.ProductCategories, "Id", "Name"), "Pasirinkti", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(p => p.Product.ProductCategoryId)
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    @Html.HiddenFor(p => p.Product.Id)
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-primary">Išsaugoti</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

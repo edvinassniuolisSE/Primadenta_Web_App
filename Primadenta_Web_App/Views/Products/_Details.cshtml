@@ -1,0 +1,72 @@
+﻿@model Primadenta_Web_App.ViewModels.NewProductViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>title</h2>
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myModalLabel">FriendsInfo</h4>
+    </div>  
+    <hr />  
+    <dl class="dl-horizontal">  
+        <dt>  
+            @Html.DisplayNameFor(model => model.Product.Name)  
+        </dt>  
+  
+        <dd>  
+            @Html.DisplayFor(model => model.Product.Id)  
+        </dd>  
+  
+    </dl>  
+</div>
+
+<div id='myModal' class='modal'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+
+</div>   
+
+@section scripts
+{
+    <script>
+        var TeamDetailPostBackURL = '/Home/Details';
+        $(function () {
+            $(".anchorDetail").click(function () {
+                debugger;
+                var $buttonClicked = $(this);
+                var id = $buttonClicked.attr('data-id');
+                var options = { "backdrop": "static", keyboard: true };
+                $.ajax({
+                    type: "GET",
+                    url: TeamDetailPostBackURL,
+                    contentType: "application/json; charset=utf-8",
+                    data: { "Id": id },
+                    datatype: "json",
+                    success: function (data) {
+                        debugger;
+                        $('#myModalContent').html(data);
+                        $('#myModal').modal(options);
+                        $('#myModal').modal('show');
+
+                    },
+                    error: function () {
+                        alert("Dynamic content load failed.");
+                    }
+                });
+            });
+            //$("#closebtn").on('click',function(){  
+            //    $('#myModal').modal('hide');    
+
+            $("#closbtn").click(function () {
+                $('#myModal').modal('hide');
+            });
+        });
+    </script>
+}

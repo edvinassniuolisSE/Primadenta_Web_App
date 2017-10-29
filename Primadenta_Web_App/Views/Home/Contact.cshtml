@@ -1,17 +1,165 @@
 ﻿@{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = "Contacts";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<section>
+    <div>
+        <div id="map"></div>
+    </div>
+</section>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<div id="content">
+    <div class="container" id="contact">
+
+        <section>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <section>
+                        <div class="heading">
+                            <h4>Mes čia tam, kad Jums padėtume</h4>
+                        </div>
+                        <p class="lead">
+                            Ar Jums įdomūs mūsų produktai? Norėtumėte daugiau sužinoti apie juos? Klauskite ir mes jums atsakysime.
+                        </p>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="box-simple">
+                        <div class="icon">
+                            <i class="fa fa-map-marker"></i>
+                        </div>
+                        <h3>Adresas</h3>
+                        <p>
+                            Elniakampio 10-6
+                            <br>Vilnius, <strong>Lietuva</strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+
+                    <div class="box-simple">
+                        <div class="icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <h3>Telefono Numeris</h3>
+                        <p class="text-muted"></p>
+                        <p>
+                            <strong>+370 650 75097</strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box-simple">
+                        <div class="icon">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                        <h3>Electroninins paštas</h3>
+                        <p class="text-muted">Turėdami klausimų visada galite kreiptis mūsų elektroninio pašto adresu.</p>
+                        <ul class="list-style-none">
+                            <li>
+                                <strong><a href="mailto:">inga.numaviciene@gmail.com</a></strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<section class="bar background-pentagon no-mb">
+    <div class="container">
+        <div class="row text-center">
+
+            <div class="col-md-12">
+                <div class="heading">
+                    <h2>Kontaktų forma</h2>
+                </div>
+            </div>
+
+            <div class="col-md-8 col-md-offset-2">
+                <form>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="firstname">Vardas</label>
+                                <input type="text" class="form-control" id="firstname">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="lastname">Pavardė</label>
+                                <input type="text" class="form-control" id="lastname">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="email">Elektroninio pašto adresas</label>
+                                <input type="text" class="form-control" id="email">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="subject">Tema</label>
+                                <input type="text" class="form-control" id="subject">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="message">Žinutė</label>
+                                <textarea id="message" class="form-control"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 text-center">
+                            <button type="submit" class="btn btn-template-main"><i class="fa fa-envelope-o"></i>Siųsti</button>
+
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </form>
+
+
+
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+</section>
+
+
+
+
+
+
+
+
+@section scripts
+{
+    <script>
+        function initMap() {
+            var uluru = {
+                lat: 54.739095899999995,
+                lng: 25.31090740000002
+            };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 13,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDH7vNUTINkx_l7FV3qRTsK_BpUM2gXhDE&callback=initMap">
+    </script>
+
+}

@@ -34,7 +34,6 @@ namespace Primadenta_Web_App.Controllers.Api
                 productDto = _context.Products
                     .Include(c => c.Company)
                     .Include(p => p.ProductCategory)
-                    .Where(c => c.Name.Contains(query))
                     .ToList()
                     .Select(Mapper.Map<Product, ProductDto>);
             else
@@ -48,17 +47,47 @@ namespace Primadenta_Web_App.Controllers.Api
         }
 
         [HttpGet]
-        public IHttpActionResult GetProduct(int id)
+        public IHttpActionResult GetProductById(int id)
         {
+            List<Product> productDto = new List<Product>();
+
             var productFromDb = _context.Products
                 .Include(c => c.Company)
                 .Include(p => p.ProductCategory)
                 .SingleOrDefault(p => p.Id == id);
 
+            productDto.Add(productFromDb);
+
             if (productFromDb == null)
                 return NotFound();
 
-            return Ok(Mapper.Map<Product, ProductDto>(productFromDb));
+
+
+            //return Ok(Mapper.Map<Product, ProductDto>(productFromDb));
+            return Ok(productDto);
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetProductByCategory(int categoryId)
+        {
+            List<Product> productDto = new List<Product>();
+
+            var productFromDb = _context.Products
+                .Include(c => c.Company)
+                .Include(p => p.ProductCategory)
+                .Where(p => p.ProductCategoryId == categoryId)
+                .ToList()
+                .Select(Mapper.Map<Product, ProductDto>);
+
+            //productDto.Add(productFromDb);
+
+            if (productFromDb == null)
+                return NotFound();
+
+
+
+            //return Ok(Mapper.Map<Product, ProductDto>(productFromDb));
+            return Ok(productFromDb);
         }
 
         [HttpPost]
