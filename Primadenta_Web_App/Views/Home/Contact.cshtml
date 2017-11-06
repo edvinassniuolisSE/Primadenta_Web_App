@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Primadenta_Web_App.Models.BusinessData.ContactForm
+@{
     ViewBag.Title = "Contacts";
 }
 
@@ -8,73 +9,66 @@
     </div>
 </section>
 
-<div id="content">
-    <div class="container" id="contact">
-
-        <section>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <section>
-                        <div class="heading">
-                            <h4>Mes čia tam, kad Jums padėtume</h4>
-                        </div>
-                        <p class="lead">
-                            Ar Jums įdomūs mūsų produktai? Norėtumėte daugiau sužinoti apie juos? Klauskite ir mes jums atsakysime.
-                        </p>
-                    </section>
+<section class="bar background-white">
+    <div class="container">      
+        <div class="row same-height-row">
+            <div class="col-md-3">
+                <div class="box-simple box-white same-height">
+                    <div class="icon">
+                        <i class="fa fa-map-marker"></i>
+                    </div>
+                    <h3>Adresas</h3>
+                    <p>
+                        Elniakampio 10-6 10100
+                        <br>Vilnius, <strong>Lietuva</strong>
+                    </p>
                 </div>
             </div>
-        </section>
-
-        <section>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="box-simple">
-                        <div class="icon">
-                            <i class="fa fa-map-marker"></i>
-                        </div>
-                        <h3>Adresas</h3>
-                        <p>
-                            Elniakampio 10-6
-                            <br>Vilnius, <strong>Lietuva</strong>
-                        </p>
+            <div class="col-md-3">
+                <div class="box-simple box-white same-height">
+                    <div class="icon">
+                        <i class="fa fa-phone"></i>
                     </div>
-                </div>
-                <div class="col-md-4">
-
-                    <div class="box-simple">
-                        <div class="icon">
-                            <i class="fa fa-phone"></i>
-                        </div>
-                        <h3>Telefono Numeris</h3>
-                        <p class="text-muted"></p>
-                        <p>
-                            <strong>+370 650 75097</strong>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="box-simple">
-                        <div class="icon">
-                            <i class="fa fa-envelope"></i>
-                        </div>
-                        <h3>Electroninins paštas</h3>
-                        <p class="text-muted">Turėdami klausimų visada galite kreiptis mūsų elektroninio pašto adresu.</p>
-                        <ul class="list-style-none">
-                            <li>
-                                <strong><a href="mailto:">inga.numaviciene@gmail.com</a></strong>
-                            </li>
-                        </ul>
-                    </div>
+                    <h3>Telefono numeris</h3>
+                    <p>+370 650 75097</p>
                 </div>
             </div>
-        </section>
+            <div class="col-md-3">
+                <div class="box-simple box-white same-height">
+                    <div class="icon">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                    <h3>SEO and SEM</h3>
+                    <p>Turėdami klausimų visada galite kreiptis mūsų elektroninio pašto adresu.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="box-simple box-white same-height">
+                    <div class="icon">
+                        <i class="fa fa-book"></i>
+                    </div>
+                    <h3>Elektroninis paštas</h3>
+                    <p>Turėdami klausimų visada galite kreiptis mūsų elektroninio pašto adresu.</p>
+                    <strong><a href="mailto:">inga.numaviciene@gmail.com</a></strong>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
 
 <section class="bar background-pentagon no-mb">
-    <div class="container">
+    <div style="padding: 0 0 10px"class="container">
         <div class="row text-center">
 
             <div class="col-md-12">
@@ -84,47 +78,52 @@
             </div>
 
             <div class="col-md-8 col-md-offset-2">
-                <form>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="firstname">Vardas</label>
-                                <input type="text" class="form-control" id="firstname">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="lastname">Pavardė</label>
-                                <input type="text" class="form-control" id="lastname">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="email">Elektroninio pašto adresas</label>
-                                <input type="text" class="form-control" id="email">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="subject">Tema</label>
-                                <input type="text" class="form-control" id="subject">
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label for="message">Žinutė</label>
-                                <textarea id="message" class="form-control"></textarea>
-                            </div>
-                        </div>
 
-                        <div class="col-sm-12 text-center">
-                            <button type="submit" class="btn btn-template-main"><i class="fa fa-envelope-o"></i>Siųsti</button>
+                
+                
+                
+                @using (Html.BeginForm("Save", "Home", FormMethod.Post))
+                {
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            @Html.LabelFor(p => p.Name)
+                            @Html.TextBoxFor(p => p.Name, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(p => p.Name)
 
                         </div>
                     </div>
-                    <!-- /.row -->
-                </form>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            @Html.LabelFor(p => p.Surname)
+                            @Html.TextBoxFor(p => p.Surname, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(p => p.Surname)
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            @Html.LabelFor(p => p.Email)
+                            @Html.TextBoxFor(p => p.Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(p => p.Email)
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            @Html.LabelFor(p => p.Subject)
+                            @Html.TextBoxFor(p => p.Subject, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(p => p.Subject)
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            @Html.LabelFor(p => p.Message)
+                            @Html.TextAreaFor(p => p.Message, new { @class = "form-control", rows = 6 })
+                            @Html.ValidationMessageFor(p => p.Message)
+                        </div>
+                    </div>
+                    @Html.AntiForgeryToken()
+                    <button type="submit" id="send" class="btn btn-template-main">Siųsti</button>
 
+                }
 
 
             </div>
@@ -138,28 +137,26 @@
 
 
 
-
-
-@section scripts
+    @section scripts
 {
-    <script>
-        function initMap() {
-            var uluru = {
-                lat: 54.739095899999995,
-                lng: 25.31090740000002
-            };
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 13,
-                center: uluru
-            });
-            var marker = new google.maps.Marker({
-                position: uluru,
-                map: map
-            });
-        }
-    </script>
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDH7vNUTINkx_l7FV3qRTsK_BpUM2gXhDE&callback=initMap">
-    </script>
+        <script>
+            function initMap() {
+                var uluru = {
+                    lat: 54.739095899999995,
+                    lng: 25.31090740000002
+                };
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 13,
+                    center: uluru
+                });
+                var marker = new google.maps.Marker({
+                    position: uluru,
+                    map: map
+                });
+            }
+        </script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDH7vNUTINkx_l7FV3qRTsK_BpUM2gXhDE&callback=initMap">
+        </script>
 
-}
+    }

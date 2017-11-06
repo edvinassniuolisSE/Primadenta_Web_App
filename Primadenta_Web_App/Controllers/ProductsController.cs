@@ -17,14 +17,19 @@ namespace Primadenta_Web_App.Controllers
 
         public ActionResult Index()
         {
-            var viewModel = new NewProductViewModel
+            if (User.IsInRole("Admin"))
             {
-                ProductCategories = _context.ProductCategories.ToList(),
-                Companies = _context.Companies.ToList(),
-                Product = new Product()
-            };
+                var viewModel = new NewProductViewModel
+                {
+                    ProductCategories = _context.ProductCategories.ToList(),
+                    Companies = _context.Companies.ToList(),
+                    Product = new Product()
+                };
 
-            return View("Products", viewModel);
+                return View("Products_Admin", "_LayoutAdmin", viewModel);
+            }
+
+            return View("Products_NoRole");
         }
 
         [ValidateAntiForgeryToken]
@@ -40,7 +45,7 @@ namespace Primadenta_Web_App.Controllers
                     Product = product
                 };
 
-                return View("New", viewModel);
+                return View("ModalShowProducts", viewModel);
             }
 
             _context.Products.Add(product);
@@ -61,7 +66,7 @@ namespace Primadenta_Web_App.Controllers
                     Product = product
                 };
 
-                return View("New", viewModel);
+                return View("ModalShowProducts", viewModel);
             }
             var productFromDB = _context.Products.SingleOrDefault(p => p.Id == product.Id);
 
@@ -91,7 +96,7 @@ namespace Primadenta_Web_App.Controllers
                 Product = productFromDB
             };
 
-            return PartialView("_Edit", viewModel);
+            return PartialView("ModalShowProducts", viewModel);
         }
 
         public ActionResult New()

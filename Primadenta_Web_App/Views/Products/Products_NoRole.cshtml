@@ -1,0 +1,227 @@
+﻿@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-3">
+                <!-- *** MENUS AND WIDGETS ***
+                _________________________________________________________ -->
+
+                <div class="panel panel-default sidebar-menu with-icons">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Kategorijos</h3>
+                    </div>
+
+                    <div class="panel-body">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li id="visi-produktai">
+                                <a href="#">Visi Produktai</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="10">
+                                <a href="#">Kompozitai</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="7">
+                                <a href="#">Kompomerai</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="19">
+                                <a href="#">Stiklo jonomeriniai užpildai, pamušalai</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="6">
+                                <a href="#">Cementai</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="18">
+                                <a href="#">Surišimo sistemos, ėsdintojai</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="22">
+                                <a href="#">Dentinas, medžiagos endodontijai</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="5">
+                                <a href="#">Silantai ir lakai</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="21">
+                                <a href="#">Amalgamos</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="27">
+                                <a href="#">Kaiščiai</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="25">
+                                <a href="#">Endodontija</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="24">
+                                <a href="#">Šlifavimo ir poliravimo priemonės</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="31">
+                                <a href="#">Medžiagos protezavimui</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="32">
+                                <a href="#">Laikini vainikėliai</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="26">
+                                <a href="#">Maišytuvai</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="29">
+                                <a href="#">Grąžtai ir frezai</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="28">
+                                <a href="#">Pagalbinės priemonės</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="30">
+                                <a href="#">Instrumentai</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="35">
+                                <a href="#">Medžiagos balinimui</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="36">
+                                <a href="#">Medžiagos sterilizacijai</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="4">
+                                <a href="#">Medžiagos profilaktikai</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="38">
+                                <a href="#">Dezinfekcijos medžiagos</a>
+                            </li>
+                            <li class="active-on-click" product-data-id="37">
+                                <a href="#">Antgaliai</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="col-md-9" style="padding: 0px;">
+                <table id="products" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Pavadinimas</th>
+                            <th>Įpakavimas</th>
+                            <th>Firma</th>
+                            <th>Pašalinti</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>*@
+
+            @* naujas  *@
+            <div class="panel-heading">
+                <h3 class="panel-title">Users</h3>
+                <div class="pull-right">
+                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
+                </div>
+            </div>
+            <div class="col-md-9" style="padding: 0px;">
+                <table id="products" class="table table-bordered table-hover">
+                     <thead>
+                    <tr class="filters">
+                        <th>Pavadinimas</th>
+                        <th>Įpakavimas</th>
+                        <th>Firma</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                </div>
+                @* naujas  *@
+            </div>
+    </div>
+</section>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            var table = $("#products").DataTable({
+                ajax: {
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    sAjaxDataProp: "",
+                    url: "/api/products",
+                    dataSrc: ""
+                },
+                columns: [
+                    { data: "name", "autowidth": true },
+                    { data: "packaging", "autowidth": true },
+                    { data: "company.name", "autowidth": true }
+                    
+                ]
+            });
+
+
+
+            $("#visi-produktai").on("click",
+                function () {
+                    $("li").removeClass("active");
+                    table.destroy();
+                    table = $("#products").DataTable({
+                        ajax: {
+                            type: "GET",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            sAjaxDataProp: "",
+                            url: "/api/products",
+                            dataSrc: ""
+                        },
+                        columns: [
+                            { data: "name", "autowidth": true },
+                            { data: "packaging", "autowidth": true },
+                            { data: "company.name", "autowidth": true },
+                            {
+                                data: "id",
+                                render: function(data) {
+                                    return "<button class='btn-link js-delete' data-product-id=" +
+                                        data +
+                                        ">Delete</button>";
+                                },
+                                "autowidth": true
+                            }
+                        ]
+                    });
+                });
+
+            $(".active-on-click").on("click", function () {
+                $("li").removeClass("active");
+                var current = $(this);
+                current.addClass("active");
+
+                table.destroy();
+                table = $("#products").DataTable({
+                    ajax: {
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        sAjaxDataProp: "",
+                        url: "/api/products?categoryId=" + $(this).attr("product-data-id"),
+                        //url: "/api/products?categoryId=6",
+                        dataSrc: ""
+                    },
+                    columns: [
+                        { data: "name", "autowidth": true },
+                        { data: "packaging", "autowidth": true },
+                        { data: "company.name", "autowidth": true },
+                        {
+                            data: "id",
+                            render: function (data) {
+                                return "<button class='btn-link js-delete' data-product-id=" +
+                                    data +
+                                    ">Delete</button>";
+                            },
+                            "autowidth": true
+                        }
+                    ]
+                });
+            });
+        });
+    </script>
+}
+

@@ -250,9 +250,18 @@
     <Compile Include="Migrations\201710251922021_UpdatedAttributs.Designer.cs">
       <DependentUpon>201710251922021_UpdatedAttributs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710301744104_InsertCategories.cs" />
+    <Compile Include="Migrations\201710301744104_InsertCategories.Designer.cs">
+      <DependentUpon>201710301744104_InsertCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711021744423_SeedUsers.cs" />
+    <Compile Include="Migrations\201711021744423_SeedUsers.Designer.cs">
+      <DependentUpon>201711021744423_SeedUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppData\ApplicationDbContext.cs" />
     <Compile Include="Models\BusinessData\Company.cs" />
+    <Compile Include="Models\BusinessData\ContactForm.cs" />
     <Compile Include="Models\BusinessData\Product.cs" />
     <Compile Include="Models\BusinessData\ProductCategory.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
@@ -391,6 +400,9 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\3M_logo_sq.png" />
+    <Content Include="img\Adatos.png" />
+    <Content Include="img\Adseal-1024x768.png" />
     <Content Include="img\apple-touch-icon-114x114.png" />
     <Content Include="img\apple-touch-icon-120x120.png" />
     <Content Include="img\apple-touch-icon-144x144.png" />
@@ -402,6 +414,7 @@
     <Content Include="img\banner.jpg" />
     <Content Include="img\banner2.jpg" />
     <Content Include="img\basketsquare.jpg" />
+    <Content Include="img\bibs.png" />
     <Content Include="img\blog-avatar.jpg" />
     <Content Include="img\blog-avatar2.jpg" />
     <Content Include="img\blog-medium.jpg" />
@@ -410,36 +423,63 @@
     <Content Include="img\blog-recent.jpg" />
     <Content Include="img\blog.jpg" />
     <Content Include="img\blog2.jpg" />
+    <Content Include="img\Cerkamed_logo.png" />
+    <Content Include="img\chloran.png" />
+    <Content Include="img\coltenelogo.png" />
     <Content Include="img\customer-1.png" />
     <Content Include="img\customer-2.png" />
     <Content Include="img\customer-3.png" />
     <Content Include="img\customer-4.png" />
     <Content Include="img\customer-5.png" />
     <Content Include="img\customer-6.png" />
+    <Content Include="img\dentocore-kartridzas.png" />
+    <Content Include="img\DentoCore.png" />
     <Content Include="img\detailbig1.jpg" />
     <Content Include="img\detailbig2.jpg" />
     <Content Include="img\detailbig3.jpg" />
     <Content Include="img\detailsquare.jpg" />
     <Content Include="img\detailsquare2.jpg" />
     <Content Include="img\detailsquare3.jpg" />
+    <Content Include="img\diamond-2.png" />
+    <Content Include="img\Diamond-excel.png" />
+    <Content Include="img\dochem.png" />
+    <Content Include="img\edta-gel-hres.png" />
+    <Content Include="img\endo.png" />
     <Content Include="img\favicon.ico" />
+    <Content Include="img\fil-hres.png" />
     <Content Include="img\fixed-background-1.jpg" />
     <Content Include="img\fixed-background-2.jpg" />
+    <Content Include="img\flow-1-hres.png" />
+    <Content Include="img\GC-IADS.png" />
+    <Content Include="img\Glassix-kaisciai.png" />
     <Content Include="img\home-try.jpg" />
     <Content Include="img\home.jpg" />
     <Content Include="img\homepage-slider.jpg" />
+    <Content Include="img\i-FASTE1.png" />
+    <Content Include="img\i-FIX-Plus.png" />
+    <Content Include="img\i-GEL.png" />
+    <Content Include="img\i-XCITE.png" />
+    <Content Include="img\Im100_Kromopan.png" />
+    <Content Include="img\IMG_5085.png" />
+    <Content Include="img\Kenda.png" />
+    <Content Include="img\Konturines-matricos.png" />
     <Content Include="img\logo-small.png" />
     <Content Include="img\logo.png" />
+    <Content Include="img\logo_heraeuskulzer.png" />
     <Content Include="img\main-slider1.jpg" />
     <Content Include="img\main-slider2.jpg" />
     <Content Include="img\main-slider3.jpg" />
     <Content Include="img\main-slider4.jpg" />
     <Content Include="img\marker.png" />
+    <Content Include="img\MaxWipe.png" />
     <Content Include="img\men.jpg" />
+    <Content Include="img\Mikroaplikaciniai-sepeteliai.png" />
+    <Content Include="img\nitrylex_.png" />
     <Content Include="img\page-1.jpg" />
     <Content Include="img\page-2.jpg" />
     <Content Include="img\page-3.jpg" />
     <Content Include="img\payment.png" />
+    <Content Include="img\people-smile.jpg" />
     <Content Include="img\person-1.jpg" />
     <Content Include="img\person-2.jpg" />
     <Content Include="img\person-3.png" />
@@ -454,16 +494,22 @@
     <Content Include="img\portfolio-7.jpg" />
     <Content Include="img\portfolio-8.jpg" />
     <Content Include="img\portfolio-9.jpg" />
+    <Content Include="img\primadenta_logo.png" />
     <Content Include="img\product1.jpg" />
     <Content Include="img\product2.jpg" />
     <Content Include="img\product3.jpg" />
     <Content Include="img\product4.jpg" />
+    <Content Include="img\Protesil2.png" />
+    <Content Include="img\Protesil3.png" />
+    <Content Include="img\Reflectys.png" />
+    <Content Include="img\Sekcijines-matricos.png" />
     <Content Include="img\slide1.jpg" />
     <Content Include="img\slide2.jpg" />
     <Content Include="img\slide3.jpg" />
     <Content Include="img\slide4.jpg" />
     <Content Include="img\slide5.jpg" />
     <Content Include="img\slide6.jpg" />
+    <Content Include="img\Speedex.png" />
     <Content Include="img\template-easy-code.png" />
     <Content Include="img\template-easy-customize-less.png" />
     <Content Include="img\template-easy-customize.png" />
@@ -474,6 +520,8 @@
     <Content Include="img\texture-bw.png" />
     <Content Include="img\texture-turquoise.png" />
     <Content Include="img\texture-violet.png" />
+    <Content Include="img\Totalcem.png" />
+    <Content Include="img\WHITENESS_SERINGA_16.png" />
     <Content Include="img\women.jpg" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
@@ -607,12 +655,20 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Products\Products.cshtml" />
+    <Content Include="Views\Products\Products_Admin.cshtml" />
     <Content Include="Views\Products\New.cshtml" />
     <Content Include="Views\Products\_Details.cshtml" />
     <Content Include="Views\Products\Modal.cshtml" />
     <Content Include="Views\Products\_New.cshtml" />
     <Content Include="Views\Products\_Edit.cshtml" />
+    <Content Include="Views\Products\ModalShowProducts.cshtml" />
+    <Content Include="Views\Products\Products_NoRole.cshtml" />
+    <Content Include="Views\Account\_Login.cshtml" />
+    <Content Include="Views\Shared\_LoginModal.cshtml" />
+    <Content Include="Views\Shared\_LoginModalIsNotValid.cshtml" />
+    <Content Include="Views\Home\IndexLoginIsNotValid.cshtml" />
+    <Content Include="Views\Home\TestLayout.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -637,6 +693,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710251922021_UpdatedAttributs.resx">
       <DependentUpon>201710251922021_UpdatedAttributs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710301744104_InsertCategories.resx">
+      <DependentUpon>201710301744104_InsertCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711021744423_SeedUsers.resx">
+      <DependentUpon>201711021744423_SeedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
