@@ -1,0 +1,32 @@
+﻿@model Primadenta_Web_App.ViewModels.NewProductViewModel
+
+<div class="modal fade createCompany">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button data-dismiss="modal" class="close"><span>&times;</span></button>
+                <div class="modal-title">Įtraukti firmą</div>
+            </div>
+            @using (Html.BeginForm("SaveCompany", "Products", FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <div class="form-group">
+                        @Html.LabelFor(p => p.Company.Name)
+                        @Html.TextBoxFor(p => p.Company.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(p => p.Company.Name)
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    @Html.HiddenFor(p => p.Product.Id)
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-primary">Išsaugoti</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

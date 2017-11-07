@@ -49,7 +49,7 @@
 
     <title>@ViewBag.Title - My ASP.NET Application</title>
 
-    @*@Styles.Render("~/Content/css")*@
+    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
@@ -125,35 +125,7 @@
                                 @Html.ActionLink("Pagrindinis", "TestLayout", "Home")
                             </li>
                             <li class="dropdown use-yamm yamm-fw">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Produktai<b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <div class="yamm-content">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <img src="~/img/DentoCore.png" class="img-responsive hidden-xs" alt="">
-                                                </div>
-                                                <div class="col-sm-5">
-                                                    <h5>Funkcijos</h5>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="template-accordions.html">Peržiūrėti produktus</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="template-alerts.html">Sukurti produktą</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="template-buttons.html">Sukurti firmą</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="template-content-boxes.html">Sukurti kategoriją</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+                                @Html.ActionLink("Produktai", "Index", "Products")
                             </li>
                             <li class="dropdown use-yamm yamm-fw">
                                 @Html.ActionLink("Apie mus", "About", "Home")
@@ -190,6 +162,8 @@
 
 
             </div>
+            
+
             <!-- /#navbar -->
             @* LOGINAS................................................................... *@
             @* <a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign in</span></a> *@

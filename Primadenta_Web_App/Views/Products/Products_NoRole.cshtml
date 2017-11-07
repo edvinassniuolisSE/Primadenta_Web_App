@@ -111,14 +111,11 @@
 
             @* naujas  *@
             <div class="panel-heading">
-                <h3 class="panel-title">Users</h3>
-                <div class="pull-right">
-                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
-                </div>
+                <h3 class="panel-title">Produktai</h3>
             </div>
             <div class="col-md-9" style="padding: 0px;">
                 <table id="products" class="table table-bordered table-hover">
-                     <thead>
+                    <thead>
                     <tr class="filters">
                         <th>Pavadinimas</th>
                         <th>Įpakavimas</th>
@@ -128,11 +125,12 @@
                     <tbody>
                     </tbody>
                 </table>
-                </div>
-                @* naujas  *@
             </div>
+        </div>
     </div>
 </section>
+
+<button id="click-me">Testas</button>
 
 
 @section scripts
@@ -150,18 +148,17 @@
                     dataSrc: ""
                 },
                 columns: [
-                    { data: "name", "autowidth": true },
-                    { data: "packaging", "autowidth": true },
-                    { data: "company.name", "autowidth": true }
+                    { data: "name", "width": "20%" },
+                    { data: "packaging", "width": "20%" },
+                    { data: "company.name", "width": "20%" }
                     
                 ]
             });
 
-
-
             $("#visi-produktai").on("click",
                 function () {
                     $("li").removeClass("active");
+                    table.clear();
                     table.destroy();
                     table = $("#products").DataTable({
                         ajax: {
@@ -173,18 +170,9 @@
                             dataSrc: ""
                         },
                         columns: [
-                            { data: "name", "autowidth": true },
-                            { data: "packaging", "autowidth": true },
-                            { data: "company.name", "autowidth": true },
-                            {
-                                data: "id",
-                                render: function(data) {
-                                    return "<button class='btn-link js-delete' data-product-id=" +
-                                        data +
-                                        ">Delete</button>";
-                                },
-                                "autowidth": true
-                            }
+                            { data: "name", "width": "20%" },
+                            { data: "packaging", "width": "20%" },
+                            { data: "company.name", "width": "20%" }
                         ]
                     });
                 });
@@ -193,7 +181,7 @@
                 $("li").removeClass("active");
                 var current = $(this);
                 current.addClass("active");
-
+                table.clear();
                 table.destroy();
                 table = $("#products").DataTable({
                     ajax: {
@@ -202,22 +190,12 @@
                         dataType: "json",
                         sAjaxDataProp: "",
                         url: "/api/products?categoryId=" + $(this).attr("product-data-id"),
-                        //url: "/api/products?categoryId=6",
                         dataSrc: ""
                     },
                     columns: [
-                        { data: "name", "autowidth": true },
-                        { data: "packaging", "autowidth": true },
-                        { data: "company.name", "autowidth": true },
-                        {
-                            data: "id",
-                            render: function (data) {
-                                return "<button class='btn-link js-delete' data-product-id=" +
-                                    data +
-                                    ">Delete</button>";
-                            },
-                            "autowidth": true
-                        }
+                        { data: "name", "width": "20%" },
+                        { data: "packaging", "width": "20%" },
+                        { data: "company.name", "width": "20%" }
                     ]
                 });
             });

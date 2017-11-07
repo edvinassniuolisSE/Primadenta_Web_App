@@ -18,7 +18,7 @@
                         <h3 class="panel-title">Kategorijos</h3>
                     </div>
 
-                    <div class="panel-body">
+                    <div class="panel-body" id="custom-categories">
                         <ul class="nav nav-pills nav-stacked">
                             <li id="visi-produktai">
                                 <a href="#">Visi Produktai</a>
@@ -95,7 +95,7 @@
                 </div>
             </div>
 
-            <div class="col-md-9" style="padding: 0px;">
+            @*<div class="col-md-9" style="padding: 0px;">
                 <table id="products" class="table table-bordered table-hover">
                     <thead>
                         <tr>
@@ -108,18 +108,30 @@
                     </thead>
                     <tbody></tbody>
                 </table>
-            </div>
+            </div>*@
 
             @* naujas  *@
-            @*<div class="panel-heading">
-                <h3 class="panel-title">Users</h3>
+            <div class="panel-heading">
+                
+
                 <div class="pull-right">
-                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
+                    <p>
+                        <a class="btn btn-template-primary" id="new-page" data-toggle="modal" data-target=".createProduct"><span class="glyphicon glyphicon-edit"></span> Įdėti produktą</a>
+                        @Html.Partial("_NewProduct")
+                    </p>
+                    <p>
+                        <a class="btn btn-template-primary" id="new-page" data-toggle="modal" data-target=".createCompany"><span class="glyphicon glyphicon-edit"></span>  Įdėti firmą</a>
+                        @Html.Partial("_NewCompany")
+                    </p>
                 </div>
+                <div class="panel-heading">
+                    <h3 class="panel-title">Produktai</h3>
+                </div>
+
             </div>
-            <div class="col-md-9" style="padding: 0px;">
-                <table id="products" class="table table-bordered table-hover">
-                     <thead>
+            <div class="col-md-9 custyle" style="padding: 0px;">
+                <table id="products" class="table table-striped table-hover custab">
+                    <thead>
                     <tr class="filters">
                         <th>Pavadinimas</th>
                         <th>Įpakavimas</th>
@@ -131,22 +143,17 @@
                     <tbody>
                     </tbody>
                 </table>
-                </div>*@
+            </div>
             </div>
     </div>
 </section>
-
-<div>
-    <a class="btn btn-primary" data-toggle="modal" data-target=".create"><span class="glyphicon glyphicon-edit"></span>  Įdėti produktą</a>
-    @Html.Partial("_New")
-</div>
 
 
 
 @section scripts
 {
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             var table = $("#products").DataTable({
                 ajax: {
@@ -158,12 +165,12 @@
                     dataSrc: ""
                 },
                 columns: [
-                    { data: "name", "autowidth": true },
-                    { data: "packaging", "autowidth": true },
-                    { data: "company.name", "autowidth": true },
+                    { data: "name", "width": "30%" },
+                    { data: "packaging", "width": "10%" },
+                    { data: "company.name", "width": "20%" },
                     {
                         data: "id",
-                        width: "50px",
+                        width: "10%",
                         render: function(data) {
                             return "<button class='btn-link js-delete popup' data-product-id=" +
                                 data +
@@ -172,15 +179,13 @@
                     },
                     {
                         data: "id",
-                        width: "50px",
-                        render: function (data) {
-                            @*return @Html.ActionLink("Update", "Edit", "Products", new {id = data})*@
+                        width: "10%",
+                        render: function(data) {
                             return "<a class='btn-link' href='/products/edit/" + data + "'>Pakeisti</a>";
                         }
                     }
                 ]
             });
-
 
             $("#products").on("click",
                 ".js-delete",
@@ -202,9 +207,10 @@
                         });
                 });
 
-            $("#visi-produktai").on("click",
-                function () {
+            $('#visi-produktai').on('click',
+                function() {
                     $("li").removeClass("active");
+                    table.clear();
                     table.destroy();
                     table = $("#products").DataTable({
                         ajax: {
@@ -216,55 +222,73 @@
                             dataSrc: ""
                         },
                         columns: [
-                            { data: "name", "autowidth": true },
-                            { data: "packaging", "autowidth": true },
-                            { data: "company.name", "autowidth": true },
+                            { data: "name", "width": "30%" },
+                            { data: "packaging", "width": "10%" },
+                            { data: "company.name", "width": "20%" },
                             {
                                 data: "id",
+                                width: "10%",
                                 render: function(data) {
-                                    return "<button class='btn-link js-delete' data-product-id=" +
+                                    return "<button class='btn-link js-delete popup' data-product-id=" +
                                         data +
-                                        ">Delete</button>";
-                                },
-                                "autowidth": true
+                                        ">Pašalinti</button>";
+                                }
+                            },
+                            {
+                                data: "id",
+                                width: "10%",
+                                render: function(data) {
+                                    @*return @Html.ActionLink("Update", "Edit", "Products", new {id = data})*@
+                                    return "<a class='btn-link' href='/products/edit/" + data + "'>Pakeisti</a>";
+                                }
                             }
                         ]
                     });
                 });
 
-            $(".active-on-click").on("click", function () {
-                table.destroy();
-                $("li").removeClass("active");
-                var current = $(this);
-                current.addClass("active");
+            $('.active-on-click').on("click",
+                function() {
+                    table.clear();
+                    table.destroy();
+                    $("li").removeClass("active");
+                    var current = $(this);
+                    current.addClass("active");
 
-                
-                table = $("#products").DataTable({
-                    ajax: {
-                        type: "GET",
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        sAjaxDataProp: "",
-                        url: "/api/products?categoryId=" + $(this).attr("product-data-id"),
-                        //url: "/api/products?categoryId=6",
-                        dataSrc: ""
-                    },
-                    columns: [
-                        { data: "name", "autowidth": true },
-                        { data: "packaging", "autowidth": true },
-                        { data: "company.name", "autowidth": true },
-                        {
-                            data: "id",
-                            render: function (data) {
-                                return "<button class='btn-link js-delete' data-product-id=" +
-                                    data +
-                                    ">Delete</button>";
+
+                    table = $("#products").DataTable({
+                        ajax: {
+                            type: "GET",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            sAjaxDataProp: "",
+                            url: "/api/products?categoryId=" + $(this).attr("product-data-id"),
+                            //url: "/api/products?categoryId=6",
+                            dataSrc: ""
+                        },
+                        columns: [
+                            { data: "name", "width": "30%" },
+                            { data: "packaging", "width": "10%" },
+                            { data: "company.name", "width": "20%" },
+                            {
+                                data: "id",
+                                width: "10%",
+                                render: function(data) {
+                                    return "<button class='btn-link js-delete popup' data-product-id=" +
+                                        data +
+                                        ">Pašalinti</button>";
+                                }
                             },
-                            "autowidth": true
-                        }
-                    ]
+                            {
+                                data: "id",
+                                width: "10%",
+                                render: function(data) {
+                                    @*return @Html.ActionLink("Update", "Edit", "Products", new {id = data})*@
+                                    return "<a class='btn-link' href='/products/edit/" + data + "'>Pakeisti</a>";
+                                }
+                            }
+                        ]
+                    });
                 });
-            });
         });
     </script>
 }

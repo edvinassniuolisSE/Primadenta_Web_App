@@ -32,8 +32,9 @@ namespace Primadenta_Web_App
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css",
+                      //"~/Content/bootstrap.css",
+                      //"~/Content/bootstrap.min.css",
+                      //"~/Content/site.css",
                       "~/Content/CustomCSS/animate.css",
                       "~/Content/CustomCSS/custom.css",
                       "~/Content/CustomCSS/font-awesome.css"));

@@ -136,8 +136,8 @@
 </section>
 
 <div>
-    <a class="btn btn-primary" data-toggle="modal" data-target=".create"><span class="glyphicon glyphicon-edit"></span>  Įdėti produktą</a>
-    @Html.Partial("_New")
+    <a class="btn btn-primary" data-toggle="modal" data-target=".createProduct"><span class="glyphicon glyphicon-edit"></span>  Įdėti produktą</a>
+    @Html.Partial("_NewProduct")
 </div>
 
 
@@ -147,7 +147,7 @@
     <script>
         $(document).ready(function () {
 
-            $('.create').modal('show');
+            $('.createProduct').modal('show');
 
             var table = $("#products").DataTable({
                 ajax: {

@@ -225,6 +225,7 @@
     <Compile Include="Controllers\Api\CompaniesController.cs" />
     <Compile Include="Controllers\Api\ProductCategoriesController.cs" />
     <Compile Include="Controllers\Api\ProductsController.cs" />
+    <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -659,7 +660,7 @@
     <Content Include="Views\Products\New.cshtml" />
     <Content Include="Views\Products\_Details.cshtml" />
     <Content Include="Views\Products\Modal.cshtml" />
-    <Content Include="Views\Products\_New.cshtml" />
+    <Content Include="Views\Products\_NewProduct.cshtml" />
     <Content Include="Views\Products\_Edit.cshtml" />
     <Content Include="Views\Products\ModalShowProducts.cshtml" />
     <Content Include="Views\Products\Products_NoRole.cshtml" />
@@ -669,6 +670,8 @@
     <Content Include="Views\Home\IndexLoginIsNotValid.cshtml" />
     <Content Include="Views\Home\TestLayout.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Companies\_New.cshtml" />
+    <Content Include="Views\Products\_NewCompany.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

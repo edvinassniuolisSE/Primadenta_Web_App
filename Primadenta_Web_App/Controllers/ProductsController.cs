@@ -23,6 +23,7 @@ namespace Primadenta_Web_App.Controllers
                 {
                     ProductCategories = _context.ProductCategories.ToList(),
                     Companies = _context.Companies.ToList(),
+                    Company = new Company(),
                     Product = new Product()
                 };
 
@@ -34,7 +35,7 @@ namespace Primadenta_Web_App.Controllers
 
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult Save(Product product)
+        public ActionResult SaveProduct(Product product)
         {
             if (!ModelState.IsValid)
             {
@@ -109,6 +110,33 @@ namespace Primadenta_Web_App.Controllers
             };
 
             return View("New", viewModel);
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult SaveCompany(Company company)
+        {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new NewProductViewModel
+                {
+                    ProductCategories = _context.ProductCategories.ToList(),
+                    Companies = _context.Companies.ToList(),
+                    Company = company
+                };
+
+                return RedirectToAction("Index", "Products", viewModel);
+            }
+
+            var companyFromDb = _context.Companies.SingleOrDefault(c => c.Name == company.Name);
+
+            if (companyFromDb != null)
+                return HttpNotFound("Tokia firma jau egzistuoja");
+
+            _context.Companies.Add(company);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Products");
         }
     }
 }

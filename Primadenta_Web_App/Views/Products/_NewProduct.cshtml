@@ -1,13 +1,13 @@
 ﻿@model Primadenta_Web_App.ViewModels.NewProductViewModel
 
-<div class="modal fade create">
+<div class="modal fade createProduct">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button data-dismiss="modal" class="close"><span>&times;</span></button>
                 <div class="modal-title">Įtraukti produktą</div>
             </div>
-            @using (Html.BeginForm("Save", "Products", FormMethod.Post))
+            @using (Html.BeginForm("SaveProduct", "Products", FormMethod.Post))
             {
                 <div class="modal-body">
                     <div class="form-group">
