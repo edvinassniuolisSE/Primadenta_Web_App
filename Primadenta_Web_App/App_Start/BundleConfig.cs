@@ -21,7 +21,9 @@ namespace Primadenta_Web_App
                         "~/Scripts/owl.carousel.min.js",
                         "~/Scripts/bootbox.js",
                         "~/Scripts/datatables/jquery.datatables.js",
-                        "~/Scripts/datatables/datatables.bootstrap.js"));
+                        "~/Scripts/datatables/datatables.bootstrap.js",
+                        "~/Scripts/canvasjs.min.js",
+                        "~/Scripts/jquery.canvasjs.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

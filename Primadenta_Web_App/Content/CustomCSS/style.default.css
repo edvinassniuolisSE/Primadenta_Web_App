@@ -3167,7 +3167,7 @@ a {
 }
 a:hover,
 a:focus {
-  color: white;
+  color: #555;
   text-decoration: underline;
 }
 a:focus {
@@ -3589,4 +3589,8 @@ a.list-group-item.active > .badge,
 .custab:hover{
     box-shadow: 3px 3px 0px transparent;
     transition: 0.5s;
+}
+
+.pssw-container {
+    border: 1px solid black;
 }
