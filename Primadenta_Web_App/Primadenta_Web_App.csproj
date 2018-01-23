@@ -676,6 +676,7 @@
     <Content Include="Views\Companies\_New.cshtml" />
     <Content Include="Views\Products\_NewCompany.cshtml" />
     <Content Include="Views\Manage\_ChangePassword.cshtml" />
+    <Content Include="Views\Home\_EMail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

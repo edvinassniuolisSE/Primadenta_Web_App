@@ -27,7 +27,7 @@ namespace Primadenta_Web_App.Controllers
                     Product = new Product()
                 };
 
-                return View("Products_Admin", "_LayoutAdmin", viewModel);
+                return View("Products_Admin", viewModel);
             }
 
             return View("Products_NoRole");
@@ -37,6 +37,9 @@ namespace Primadenta_Web_App.Controllers
         [HttpPost]
         public ActionResult SaveProduct(Product product)
         {
+            TempData["msg"] =
+                "<div class=\"col-sm-6 col-md-6\" style=\"position:fixed;bottom: 0;right: 0;\">\n            <div class=\"alert alert-success\">\n                <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">\n                    ×</button>\n               <span class=\"glyphicon glyphicon-ok\"></span> <strong>Pavyko!</strong>\n                <hr class=\"message-inner-separator\">\n                <p>\n                    Prouktas sėkmingai išsaugotas</p>\n            </div>\n        </div>";
+
             if (!ModelState.IsValid)
             {
                 var viewModel = new NewProductViewModel
@@ -58,6 +61,8 @@ namespace Primadenta_Web_App.Controllers
         [HttpPost]
         public ActionResult Update(Product product)
         {
+            TempData["msg"] =
+                "<div class=\"col-sm-6 col-md-6\" style=\"position:fixed;bottom: 0;right: 0;\">\n            <div class=\"alert alert-success\">\n                <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">\n                    ×</button>\n               <span class=\"glyphicon glyphicon-ok\"></span> <strong>Pavyko!</strong>\n                <hr class=\"message-inner-separator\">\n                <p>\n                    Prouktas sėkmingai pakeistas</p>\n            </div>\n        </div>";
             if (!ModelState.IsValid)
             {
                 var viewModel = new NewProductViewModel
@@ -116,6 +121,9 @@ namespace Primadenta_Web_App.Controllers
         [HttpPost]
         public ActionResult SaveCompany(Company company)
         {
+            ;
+            TempData["msg"] =
+                "<div class=\"col-sm-6 col-md-6\" style=\"position:fixed;bottom: 0;right: 0;\">\n            <div class=\"alert alert-success\">\n                <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">\n                    ×</button>\n               <span class=\"glyphicon glyphicon-ok\"></span> <strong>Pavyko!</strong>\n                <hr class=\"message-inner-separator\">\n                <p>\n                    Įmonė sėkmingai išsaugota</p>\n            </div>\n        </div>";
             if (!ModelState.IsValid)
             {
                 var viewModel = new NewProductViewModel

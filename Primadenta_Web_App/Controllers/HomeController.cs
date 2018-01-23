@@ -10,9 +10,6 @@ namespace Primadenta_Web_App.Controllers
     {
         public ActionResult Index()
         {
-            if (User.IsInRole("Admin"))
-                return View("Index", "_LayoutAdmin");
-
             return View();
         }
 
@@ -20,8 +17,8 @@ namespace Primadenta_Web_App.Controllers
         {
             ViewBag.Message = "Your application description page.";
 
-            if (User.IsInRole("Admin"))
-                return View("About", "_LayoutAdmin");
+            //if (User.IsInRole("Admin"))
+            //    return View("About", "_LayoutAdmin");
 
             return View();
         }
@@ -36,7 +33,7 @@ namespace Primadenta_Web_App.Controllers
             if (User.IsInRole("Admin"))
                 return View("Contact", "_LayoutAdmin", contact);
 
-            return View("Contact", "_Layout", contact);
+            return View("Contact");
         }
 
         public ActionResult TestLayout()

@@ -104,7 +104,7 @@
                 <div class="container">
                     <div class="navbar-header">
 
-                        <a class="navbar-brand home" href="index.html">
+                        <a class="navbar-brand home" href="/Home">
                             <img src="~/img/primadenta_logo.png" width="200" height="20" alt="Universal logo" class="hidden-xs hidden-sm logo">
                             <img src="~/img/primadenta_logo.png" width="200" height="20" alt="Universal logo" class="visible-xs visible-sm"><span class="sr-only">Universal - go to homepage</span>
                         </a>
@@ -122,10 +122,35 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown use-yamm yamm-fw">
                                 @*@Html.ActionLink("Pagrindinis", "Index", "Home")*@
-                                @Html.ActionLink("Pagrindinis", "TestLayout", "Home")
+                                @Html.ActionLink("Pagrindinis", "Index", "Home")
                             </li>
-                            <li class="dropdown use-yamm yamm-fw">
+                            @*<li class="dropdown use-yamm yamm-fw">
                                 @Html.ActionLink("Produktai", "Index", "Products")
+                            </li>*@
+                            <li class="dropdown use-yamm yamm-fw">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Produktai<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <div class="yamm-content">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <img src="~/img/DentoCore.png" class="img-responsive hidden-xs" alt="">
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <h5>Pasirinkimai</h5>
+                                                    <ul>
+                                                        <li>
+                                                            @Html.ActionLink("Produktai Technikams", "Index", "Products")
+                                                        </li>
+                                                        <li>
+                                                            @Html.ActionLink("Produktai Odontologams", "Index", "Products")
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="dropdown use-yamm yamm-fw">
                                 @Html.ActionLink("Apie mus", "About", "Home")

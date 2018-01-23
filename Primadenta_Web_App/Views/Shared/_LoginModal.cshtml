@@ -1,6 +1,4 @@
-﻿@using Primadenta_Web_App.Models
-@using Primadenta_Web_App.ViewModels
-@model Primadenta_Web_App.ViewModels.LoginViewModel
+﻿@model Primadenta_Web_App.ViewModels.LoginViewModel
 
 @*<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
     <div class="modal-dialog modal-sm">
@@ -71,6 +69,9 @@
                         <div class="form-group">
                             @Html.CheckBoxFor(m => m.RememberMe)
                             @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                        <div class="form-group">
+                            
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Prisijungti</button>

@@ -106,7 +106,7 @@ namespace Primadenta_Web_App.ViewModels
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "El pašto adresas")]
         public string Email { get; set; }
     }
 }

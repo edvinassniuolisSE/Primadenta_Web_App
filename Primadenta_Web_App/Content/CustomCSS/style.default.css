@@ -2667,6 +2667,7 @@ fieldset[disabled] .btn-template-primary.active {
 .nav > li > a:hover,
 .nav > li > a:focus {
     background-color: #ce424b;
+    color: white;
 }
 .nav > li.disabled > a {
   color: #999999;
@@ -3593,4 +3594,23 @@ a.list-group-item.active > .badge,
 
 .pssw-container {
     border: 1px solid black;
+}
+
+.custom-bottom-right {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+hr.message-inner-separator
+{
+    clear: both;
+    margin-top: 10px;
+    margin-bottom: 13px;
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
+    background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+    background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+    background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
 }

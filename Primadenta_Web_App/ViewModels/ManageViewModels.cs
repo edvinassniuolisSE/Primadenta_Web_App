@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using Primadenta_Web_App.Models.BusinessData;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -12,6 +13,7 @@ namespace Primadenta_Web_App.ViewModels
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
+        public List<Product> Products { get; set; }
     }
 
     public class ManageLoginsViewModel
